@@ -1,0 +1,64 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: node-builder-
+spec:
+  entrypoint: node-workflow
+  templates:
+    - name: node-workflow
+      steps:
+        - - name: dependencies
+            template: get-dependencies
+        - - name: lint
+            template: lint
+          - name: tests
+            template: tests
+          - name: echo
+            template: echo
+        - - name: deploy
+            template: deploy
+
+    - name: dependencies
+      inputs:
+        artifacts:
+          - name: node_modules
+            path: ./node_modules
+      outputs:
+        artifacts:
+          - name: node_modules
+            path: ./node_modules
+      container:
+        image: node:10.13
+        command: ['yarn']
+
+    - name: lint
+      inputs:
+        artifacts:
+          - name: node_modules
+            path: ./node_modules
+      container:
+        image: node:10.13
+        command: ['yarn']
+        args: ['lint']
+
+    - name: tests
+      inputs:
+        artifacts:
+          - name: node_modules
+            path: ./node_modules
+      container:
+        image: node:10.13
+        command: ['yarn']
+        args: ['test']
+
+    - name: echo
+      container:
+        image: alpine
+        command: ['sh', '-c']
+        args: ['echo', 'hello', 'world']
+
+    - name: deploy
+      container:
+        image: alpine
+        command: ['sh', '-c']
+        args: ['echo', 'this', 'is', 'a', 'deploy']
