@@ -11,6 +11,11 @@
     "express": "^4.16.4"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaFeatures": {
+        "modules": true
+      }
+    },
     "extends": "airbnb-base",
     "parser": "babel-eslint",
     "rules": {
