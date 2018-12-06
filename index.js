@@ -8,11 +8,11 @@ router.get('/foo', (req, res) => {
   res.json({ msg: 'You have hit the foo endpoint' });
 });
 
-router.get('/bar',(req,res) => {
+router.get('/bar', (req, res) => {
   res.json({ msg: 'You have hit the foo endpoint' });
 });
 
-app.use(router)
+app.use(router);
 
 const server = http.createServer(app);
 
