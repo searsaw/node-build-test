@@ -4,17 +4,23 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "babel -d build index.js"
+    "build": "babel -d build index.js",
+    "test": "jest",
+    "lint": "eslint index.js index.test.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.6",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "jest": "^23.6.0"
   },
   "eslintConfig": {
     "parserOptions": {
       "ecmaFeatures": {
         "modules": true
       }
+    },
+    "env": {
+      "jest": true
     },
     "extends": "airbnb-base",
     "parser": "babel-eslint",
@@ -34,5 +40,8 @@
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   }
 }
