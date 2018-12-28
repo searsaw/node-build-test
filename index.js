@@ -9,7 +9,7 @@ router.get('/foo', (req, res) => {
 });
 
 router.get('/bar', (req, res) => {
-  res.json({ msg: 'You have hit the foo endpoint' });
+  res.json({ msg: 'You have hit the bar endpoint' });
 });
 
 app.use(router);

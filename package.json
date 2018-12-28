@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel -d build index.js",
     "test": "jest",
-    "lint": "eslint index.js index.test.js"
+    "lint": "eslint index.js index.test.js",
+    "start": "node build/index.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.6",
