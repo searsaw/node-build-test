@@ -5,11 +5,11 @@ const app = express();
 const router = Router();
 
 router.get('/foo', (req, res) => {
-  res.json({ msg: 'You have hit the foo endpoint' });
+  res.json({ msg: 'You have hit the foo endpoint. You are soooo cool.' });
 });
 
 router.get('/bar', (req, res) => {
-  res.json({ msg: 'You have hit the bar endpoint' });
+  res.json({ msg: 'You have hit the bar endpoint. You are soooo cool.' });
 });
 
 app.use(router);
