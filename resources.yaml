@@ -1,0 +1,31 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-build-test
+spec:
+  selector:
+    app: node-build-test
+  ports:
+  - port: 8000
+    targetPort: 8000
+    nodePort: 31750
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-build-test
+spec:
+  selector:
+    matchLabels:
+      app: node-build-test
+  template:
+    metadata:
+      labels:
+        app: node-build-test
+    spec:
+      containers:
+      - name: node-build-test
+        image: node-build-tester:{{DOCKER_TAG}}
+        ports:
+        - containerPort: 8000
