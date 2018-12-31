@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
       - name: node-build-test
-        image: node-build-tester:{{DOCKER_TAG}}
+        image: node-build-tester:--DOCKER_TAG--
         ports:
         - containerPort: 8000
